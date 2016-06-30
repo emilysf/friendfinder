@@ -13,11 +13,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
-app.use(express.static('public'));
+app.use(express.static('app/public'));
 
 //points server to the route files
-require('./routing/api-routes.js')(app); 
-require('./routing/html-routes.js')(app);
+require('./app/routing/api-routes.js')(app); 
+require('./app/routing/html-routes.js')(app);
 
 //listener starts the server
 app.listen(PORT, function() {

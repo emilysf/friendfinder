@@ -36,7 +36,8 @@ module.exports = function(app){
 
         allDiffs.length = 0;
 
-        response.send(true);
+        response.json(friends[bestMatch]);
+
 
 
         console.log("best match is " + bestMatch);

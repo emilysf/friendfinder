@@ -1,0 +1,22 @@
+body {
+	background-image: url("../images/bg.jpg");
+	background-position: center;
+	background-size: cover;
+}
+.jumbotron {
+	background-color: rgba(238, 238, 238, 0.8);
+	margin-top: 10%;
+}
+#tosurvey {
+	background-color: #909a7d;
+	border-color: #909a7d;
+}
+#tosurvey:hover {
+	opacity:0.8;
+}
+#footer a {
+	color: #909a7d;
+}
+#footer p {
+	color:#909a7d;
+}

@@ -4,6 +4,14 @@ $(document).ready(function() {
 		// modal shows when name and photo field is empty
 		var name = $('#name').val().trim();
 		var photo = $('#photo').val().trim();
+		var answers = [];
+
+		var friendObject = {
+		    name: name,
+		    image: photo,
+		    scores: answers
+		};
+		console.log(friendObject);
 
 		if (name == '') {
 			$('#modalEmpty').modal('show');
@@ -13,8 +21,6 @@ $(document).ready(function() {
 			$('#modalEmpty').modal('show');
 			return false;
 		}
-
-		var answers = [];
 
 		for (var i = 1; i <= 10; i++) {
 			var radio = $('input:radio[name=q' + i + ']:checked').val();
@@ -27,34 +33,18 @@ $(document).ready(function() {
         		answers.push(radio);
     		}
 		};
-	
 
-	var results = {
-	    name: name,
-	    image: photo,
-	    scores: answers
-	};
+		var currentURL = window.location.origin;
 
-	var currentURL = window.location.origin;
+		$.post("/api/friends", friendObject, function(data){
 
-	//Post user object to friends API
-	console.log('here')
+			$('#showResults').html('<h3>' + data.name + '</h3> <br> <img src=' + data.image + '>');
+			$('#modalResults').modal('show');
+		})
 
-	$.post("/api/friends", results, function(data){
 
-		console.log(data.name);
-		console.log(data.photo);
-		$("#friendInfo").html("<h3>" + data.name + "</h3<br><img src=" + data.photo + " style='width:500px;'</img>");
-
-		$('#myModal').modal('show')
-	})
-});
-//clear data.
-
-$('#name').val('');
-$('#photo').val('');
-$('input:radio').attr("checked", false);
-
-return false;
+		
+	});
 
 });
+

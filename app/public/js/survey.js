@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 		$.post("/api/friends", friendObject, function(data){
 
-			$('#showResults').html('<h3>' + data.name + '</h3> <br> <img src=' + data.image + '>');
+			$('#showResults').html('<h3>' + data.name + '</h3> <br> <img src=' + data.image + ' style= "width:500px; height:auto;">');
 			$('#modalResults').modal('show');
 		})
 
